@@ -1,0 +1,85 @@
+--CREATE TABLE Department (
+--    Id INT IDENTITY(1,1) PRIMARY KEY,
+--    DEPTNO INT UNIQUE NOT NULL,
+--    DNAME VARCHAR(50),
+--    LOC VARCHAR(50)
+--);
+
+--INSERT INTO Department (DEPTNO, DNAME, LOC) VALUES
+--(10, 'ACCOUNTING', 'NEW YORK'),
+--(20, 'RESEARCH', 'DALLAS'),
+--(30, 'SALES', 'CHICAGO'),
+--(40, 'OPERATIONS', 'BOSTON');
+
+----SELECT * FROM Department;
+
+--CREATE TABLE Employee (
+--    Id INT IDENTITY(1,1) PRIMARY KEY,
+--    EMPNO INT UNIQUE NOT NULL,
+--    ENAME VARCHAR(50),
+--    JOB VARCHAR(50),
+--    MGR INT,
+--    HIREDATE DATE,
+--    SAL INT,
+--    DEPTNO INT,
+--    constraint FK_Employee_Department FOREIGN KEY (DEPTNO) REFERENCES Department(DEPTNO)
+--);
+
+--INSERT INTO Employee (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO) VALUES
+--(7369, 'SMITH', 'CLERK', 7698, '2016-12-16', 100, 10),
+--(7499, 'ALLEN', 'SALESMAN', 7698, '2023-02-20', 200, 30),
+--(7521, 'WARD', 'SALESMAN', 7782, '2023-03-21', 300, 30),
+--(7566, 'JONES', 'MANAGER', NULL, '2023-06-30', 500, 40),
+--(7654, 'MARTIN', 'SALESMAN', 7782, '2023-08-31', 300, 30),
+--(7698, 'BLAKE', 'MANAGER', NULL, '2023-09-20', 700, 40),
+--(7782, 'CLARK', 'MANAGER', NULL, '2023-10-21', 700, 40),
+--(7788, 'SCOTT', 'ANALYST', 7839, '2023-06-03', 900, 20),
+--(7839, 'KING', 'PRESIDENT', NULL, '2023-03-04', 1000, 10),
+--(7844, 'TURNER', 'SALESMAN', 7698, '2023-07-06', 300, 30),
+--(7876, 'ADAMS', 'CLERK', 7782, '2023-04-01', 100, 10),
+--(7900, 'JAMES', 'CLERK', 7698, '2023-11-04', 200, 10),
+--(7902, 'FORD', 'ANALYST', 7839, '2023-12-31', 800, 20),
+--(7934, 'MILLER', 'CLERK', 7782, '2023-05-05', 400, 10);
+
+--SELECT * FROM Employee;
+
+--select * from employee;
+
+--select distinct Job from Employee;
+
+--select * from employee order by sal asc
+
+--select * from employee order by deptno asc, job desc;
+
+--select * from Employee where Job = 'MANAGER';
+
+--SELECT EMPNO, ENAME, JOB, HIREDATE, DATEDIFF(YEAR, HIREDATE, GETDATE()) AS Exp
+--FROM Employee
+--WHERE JOB = 'MANAGER';
+
+--SELECT EMPNO, ENAME, JOB, HIREDATE
+--FROM Employee
+--WHERE HIREDATE > '1981-06-30'
+--ORDER BY JOB ASC;
+
+--SELECT EMPNO, ENAME, JOB, HIREDATE
+--FROM Employee
+--WHERE JOB IN ('CLERK', 'ANALYST')
+--ORDER BY JOB DESC;
+
+--SELECT EMPNO, ENAME, JOB, DEPTNO FROM Employee WHERE DEPTNO = 10 OR DEPTNO = 20;
+
+--SELECT EMPNO, ENAME, JOB, DEPTNO, SAL * 12 AS Annual_Salary 
+--FROM Employee 
+--WHERE SAL * 12 BETWEEN 5000 AND 14000;
+
+--SELECT ENAME 
+--FROM Employee 
+--WHERE ENAME LIKE 'S%' AND LEN(ENAME) = 5;
+
+--SELECT e.*, d.DNAME, d.LOC 
+--FROM Employee e 
+--JOIN Department d ON e.DEPTNO = d.DEPTNO 
+--WHERE d.DNAME IN ('ACCOUNTING', 'RESEARCH') 
+--ORDER BY e.DEPTNO ASC;
+
