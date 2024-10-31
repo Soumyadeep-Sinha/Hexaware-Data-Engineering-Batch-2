@@ -213,3 +213,51 @@
 --SELECT COUNT(*) AS book_count, AVG(price) AS average_price, SUM(price) AS total_price 
 --FROM books;
 
+--CREATE TABLE members (
+--    member_id INT IDENTITY(1,1) PRIMARY KEY,
+--    name VARCHAR(255) NOT NULL,
+--    address VARCHAR(255),
+--    phone VARCHAR(50),
+--    email VARCHAR(100) UNIQUE
+--);
+
+--CREATE TABLE borrowed_books (
+--    borrow_id INT IDENTITY(1,1) PRIMARY KEY,
+--    member_id INT NOT NULL,
+--    book_id INT NOT NULL,
+--    borrow_date DATE,
+--    due_date DATE,
+--    FOREIGN KEY (member_id) REFERENCES members(member_id) ON DELETE CASCADE,
+--    FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE
+--);
+
+--INSERT INTO members (name, address, phone, email) VALUES
+--('Alice Johnson', '123 Maple St', '555-0101', 'alice.johnson@example.com'),
+--('Bob Smith', '456 Oak St', '555-0102', 'bob.smith@example.com'),
+--('Carol Williams', '789 Pine St', '555-0103', 'carol.williams@example.com'),
+--('David Brown', '321 Elm St', '555-0104', 'david.brown@example.com'),
+--('Eve Davis', '654 Cedar St', '555-0105', 'eve.davis@example.com');
+
+--INSERT INTO borrowed_books (member_id, book_id, borrow_date, due_date) VALUES
+--(1, 1, '2024-10-01', '2024-10-15'),
+--(2, 2, '2024-10-02', '2024-10-16'),
+--(3, 1, '2024-10-05', '2024-10-20'),
+--(4, 3, '2024-10-08', '2024-10-22'),
+--(5, 2, '2024-10-10', '2024-10-24'),
+--(1, 3, '2024-10-12', '2024-10-26');
+
+
+--SELECT m.name, b.title, bb.borrow_date
+--FROM members m
+--JOIN borrowed_books bb ON m.member_id = bb.member_id
+--JOIN books b ON bb.book_id = b.book_id;
+
+--SELECT m.member_id, m.name, b.title
+--FROM members m
+--LEFT JOIN borrowed_books bb ON m.member_id = bb.member_id
+--LEFT JOIN books b ON bb.book_id = b.book_id;
+
+--SELECT m.member_id, m.name, COUNT(bb.book_id) AS books_borrowed
+--FROM members m
+--LEFT JOIN borrowed_books bb ON m.member_id = bb.member_id
+--GROUP BY m.member_id, m.name;
